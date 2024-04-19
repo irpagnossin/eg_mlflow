@@ -1,0 +1,9 @@
+name: mlflow
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - mlflow=2.9.2
+  - numpy=1.24.3
+  - pandas=2.2.1
+  - scikit-learn=1.4.2
