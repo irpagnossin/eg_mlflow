@@ -10,8 +10,7 @@ import pandas as pd
 
 EXPERIMENT_NAME: str = 'end-to-end-project'
 ARTIFACTS_PATH: Path = Path('artifacts')
-MODEL_FOLDER_NAME: str = 'model'
-MODEL_PATH: Path = ARTIFACTS_PATH / MODEL_FOLDER_NAME
+MODEL_PATH: Path = ARTIFACTS_PATH / 'model'
 TARGET_VARIABLE: str = 'MedHouseVal'
 
 
@@ -90,3 +89,4 @@ def custom_metric_2_definition(_, builtin_metrics):
     e disponibilizadas no segundo argumento.
     """
     return builtin_metrics['r2_score'] / 2
+
