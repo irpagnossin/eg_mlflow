@@ -4,3 +4,6 @@ mlruns/
 .ipynb_checkpoints/
 
 __pycache__/
+
+.env
+mlflow.db

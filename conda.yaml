@@ -3,7 +3,11 @@ channels:
   - conda-forge
   - defaults
 dependencies:
+  - databricks-cli=0.17.6
+  - google-auth=2.22.0
   - mlflow=2.9.2
   - numpy=1.24.3
   - pandas=2.2.1
+  - python-dotenv=0.21.0
   - scikit-learn=1.4.2
+  - google-cloud-storage=2.11.0

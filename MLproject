@@ -1,8 +1,14 @@
 name: "End-to-end project"
 conda_env: conda.yaml
 entry_points:
-  assignment:
-    command: "python main.py --regularization={regularization} --kernel={kernel} --degree={degree} --random_state={random_state}"
+  baseline_model_training:
+    command: "python baseline_model.py --random_state={random_state}"
+    parameters:
+      random_state:
+        type: int
+        default: 42
+  candidate_model_training:
+    command: "python candidate_model.py --regularization={regularization} --kernel={kernel} --degree={degree} --random_state={random_state} --baseline_run_id={baseline_run_id}"
     parameters:
       regularization:
         type: float
@@ -16,3 +22,6 @@ entry_points:
       random_state:
         type: int
         default: 42
+      baseline_run_id:
+        type: string
+        default:
