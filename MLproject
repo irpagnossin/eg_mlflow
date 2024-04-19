@@ -1,0 +1,18 @@
+name: "End-to-end project"
+conda_env: conda.yaml
+entry_points:
+  assignment:
+    command: "python main.py --regularization={regularization} --kernel={kernel} --degree={degree} --random_state={random_state}"
+    parameters:
+      regularization:
+        type: float
+        default: 0.4
+      kernel:
+        type: string
+        default: rbf
+      degree:
+        type: int
+        default: 3
+      random_state:
+        type: int
+        default: 42
