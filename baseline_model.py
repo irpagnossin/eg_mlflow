@@ -32,10 +32,10 @@ def create_baseline_model(x_train, y_train, x_test, y_test):
 @click.command()
 @click.option('--random_state', default=42, help='Random state')
 def main(random_state):
-    experiment = mlflow.set_experiment(experiment_name=EXPERIMENT_NAME,
-                                       run_name='dummy-baseline-model')
+    experiment = mlflow.set_experiment(experiment_name=EXPERIMENT_NAME)
 
-    with mlflow.start_run(experiment_id=experiment.experiment_id):
+    with mlflow.start_run(experiment_id=experiment.experiment_id,
+                          run_name='dummy-baseline-model'):
         raw_input = load_raw_input_dataframe()
         RAW_INPUT_FILENAME = ARTIFACTS_PATH / 'raw_input.csv'
         raw_input.to_csv(RAW_INPUT_FILENAME, index=False)
