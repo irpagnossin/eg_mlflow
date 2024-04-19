@@ -1,5 +1,3 @@
-from mlflow.metrics import make_metric
-from mlflow.models import MetricThreshold
 from pathlib import Path
 from sklearn.dummy import DummyRegressor
 from sklearn.model_selection import train_test_split
@@ -69,4 +67,3 @@ def main(random_state):
 if __name__ == '__main__':
     mkdirs()
     main()
-

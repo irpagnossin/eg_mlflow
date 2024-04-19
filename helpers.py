@@ -90,4 +90,3 @@ def custom_metric_2_definition(_, builtin_metrics):
     e disponibilizadas no segundo argumento.
     """
     return builtin_metrics['r2_score'] / 2
-

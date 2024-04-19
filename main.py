@@ -108,4 +108,3 @@ def main(regularization, kernel, degree, random_state, baseline_run_id):
 if __name__ == '__main__':
     mkdirs()
     main()
-
