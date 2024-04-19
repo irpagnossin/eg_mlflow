@@ -15,11 +15,6 @@ from helpers import (mkdirs, log_input, load_raw_input_dataframe, xy,
                      MODEL_PATH, TARGET_VARIABLE, EXPERIMENT_NAME)
 
 
-# Substitua pelo ID da execução que gerou o modelo de referência, isto é,
-# a execução feita com `python baseline_model.py`.
-BASELINE_RUN_ID: str = '86d62c3ccd9546fe880c6d7cee9f87a0'
-
-
 def create_candidate_model(regularization, kernel, degree,
                            x_train, y_train, x_test, y_test):
     model = Pipeline([
@@ -40,7 +35,9 @@ def create_candidate_model(regularization, kernel, degree,
 @click.option('--kernel', default='rbf', help='SVM kernel')
 @click.option('--degree', default=3, help='Degree for the "poly" kernel')
 @click.option('--random_state', default=42, help='Random state')
-def main(regularization, kernel, degree, random_state):
+@click.option('--baseline_run_id', default='86d62c3ccd9546fe880c6d7cee9f87a0',
+              help='Run ID which generated baseline model')
+def main(regularization, kernel, degree, random_state, baseline_run_id):
 
     experiment = mlflow.set_experiment(experiment_name=EXPERIMENT_NAME)
 
@@ -62,7 +59,8 @@ def main(regularization, kernel, degree, random_state):
             'random_state': random_state,
             'regularization': regularization,
             'kernel': kernel,
-            'degree': degree
+            'degree': degree,
+            'baseline_run_id': baseline_run_id
         })
 
         train, test = train_test_split(raw_input, random_state=random_state)
@@ -93,7 +91,7 @@ def main(regularization, kernel, degree, random_state):
                                       greater_is_better=True,
                                       name='custom-metric-2')
 
-        previous_run = mlflow.get_run(BASELINE_RUN_ID)
+        previous_run = mlflow.get_run(baseline_run_id)
         baseline_model_uri = previous_run.info.artifact_uri + "/model"
 
         mlflow.evaluate(
