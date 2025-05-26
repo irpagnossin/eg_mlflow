@@ -7,12 +7,9 @@ ENV DEFAULT_ARTIFACT_ROOT=${DEFAULT_ARTIFACT_ROOT}
 ENV GOOGLE_APPLICATION_CREDENTIALS=secrets/service-account.json
 
 COPY requirements.txt .
-COPY entrypoint.sh entrypoint.sh
 
-RUN chmod +x entrypoint.sh \
-  && pip install --upgrade pip \
-  && pip install -r requirements.txt
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt
 
 EXPOSE 5000
-ENTRYPOINT ["/app/entrypoint.sh"]
 

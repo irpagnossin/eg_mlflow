@@ -27,6 +27,7 @@ services:
     environment:
       DEFAULT_ARTIFACT_ROOT: ${DEFAULT_ARTIFACT_ROOT}
       BACKEND_STORE_URI: ${BACKEND_STORE_URI}
+    entrypoint: mlflow server --host 0.0.0.0 --default-artifact-root "${DEFAULT_ARTIFACT_ROOT}" --backend-store-uri "${BACKEND_STORE_URI}"
     volumes:
       - ./secrets:/app/secrets
     ports:
