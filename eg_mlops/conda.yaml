@@ -1,0 +1,13 @@
+name: eg_mlops
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=2.22.0
+  - google-auth=2.40.2
+  - mlflow=3.0.0rc2
+  - numpy=2.2.6
+  - pandas=2.2.3
+  - python-dotenv=1.1.0
+  - scikit-learn=1.6.1
+  - google-cloud-storage=3.1.0
